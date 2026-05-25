@@ -1,52 +1,77 @@
-## *Practica Prueba de metodos de ordenaiento*
+# Examen Práctico – Ordenamiento y Búsqueda de Autos
 
-## *Objetivo*
+## Enunciado
 
-Implementar los métodos sortByTitle(Movie[] movies) y sortByYear(Movie[] movies)
-en la carpeta controllers, para ordenar películas por título y por año,
-en orden ascendente y descendente, utilizando los siguientes métodos
-de ordenamiento:
+Se tiene una estructura de datos con:
 
-- Burbuja Avanzado
-- Insertion Sort
-- Selection Sort
+- Una clase `Brand` (Marca), que contiene un arreglo de `CarModel` (Modelos).
+- Cada `CarModel` contiene un arreglo de `CarYear` (Años).
+- Cada `CarYear` tiene un año (int) y un atributo booleano `isValid`.
 
-## *Que se debe editar* ? 
+## Objetivo
 
-1.Crea y edita solo en `src /  controllers  /MovieControllerBurbuja.java   / MovieControllerInsertion.java / MovieControllerSelection.java`
+Implementar los siguientes requerimientos:
 
-2.Implementa los nombres de metodos `sortByTlitle - - sortByYear`  puede haber cambios para los nombres en cada controlador
-3.Crea una clase modelo `Movie` con atributos `title` y `realeaseYear`
-4.Na mas panita 
+1. **REQUERIMIENTO CRÍTICO**: Crear el método `getTotalValidYears()` en la clase `Brand`. Este método debe calcular y retornar cuántos años **válidos** tiene la marca (sumando todos los años válidos de todos sus modelos).
+   - **Nota**: Un año se considera válido si su atributo `isValid` es `true`.
+   - **IMPORTANTE**: Sin este método implementado correctamente, el resto del examen no funcionará.
 
-### *En cada controlador debe haber su respecivo metodo para imprimir*
+```java
+public class Brand {
+    // ... otros atributos y métodos
+    
+    /**
+     * Calcula el total de años válidos de todos los modelos de esta marca
+     * @return número total de años con isValid = true
+     */
+    public int getTotalValidYears() {
+        // Implementar aquí
+    }
+}
+```
+```java
+public Brand[] sortSelectionDesc(Brand[] brands) {
+    // Implementación del método
+}
+```
 
-## Entrada de ejemplo; 
-1. Inception (2010)
-2. avatar (2009)
-3. The Matrix (1999)
-4. AVATAR (2022)
-5. Avatar (2016)
+3. Implementar un método de **búsqueda binaria** para encontrar una marca según la **cantidad de años válidos**. El método debe recibir como parámetro un valor booleano que indique si el arreglo de marcas fue ordenado de forma ascendente (`true`) o descendente (`false`), y realizar la búsqueda acorde al tipo de orden utilizado.
 
-## Salida ordenada esperada:
-1. avatar (2009)
-2. AVATAR (2022)
-3. Avatar (2016)
-4. Inception (2010)
-5. The Matrix (1999)
+El nombre del método debe ser `binarySearchByValidYears` y debe recibir un arreglo de marcas, un número de años válidos y un booleano que indique el orden.
 
-## Otro ejemplo:
+El método deberá servir para ascendente y descendente, por lo que se debe tener en cuenta el orden de los datos al realizar la búsqueda.
 
-ANTES
-1. dune (2021)
-2. Dune (1984)
-3. DUNE (2024)
-4. Batman (2022)
-5. avatar (2009)
+Para la implementación mandar el parámetro `isAscending` como `true` si el arreglo fue ordenado de forma ascendente, o `false` si fue ordenado de forma descendente, según el ordenamiento que se haya realizado previamente.
 
-DESPUÉS
-1. avatar (2009)
-2. Batman (2022)
-3. dune (2021)
-4. Dune (1984)
-5. DUNE (2024)
+No puede cambiar el nombre del método ni su firma. El método debe retornar la marca encontrada o `null` si no se encuentra.
+
+```java
+public Brand binarySearchByValidYears(
+    Brand[] brands, 
+    int validYears,
+    boolean isAscending
+    ) {
+    // Implementación del método
+}
+```
+Cada fila deberá utilizar el método `binarySearchByValidYears` para buscar dos valores diferentes de años válidos, según la siguiente tabla:
+
+## Requisitos de Implementación
+
+1. **El método `getTotalValidYears()` es OBLIGATORIO** y debe estar en la clase `Brand`
+2. **Los tests deben ejecutarse sin errores** - esto valida que su implementación es correcta
+3. **La salida en consola es OBLIGATORIA** - debe ejecutar `App.java` y copiar la salida completa
+4. **NO MODIFICAR los datos de prueba** - La clase `TestData.java` contiene el método `createBrands()` que genera 7 marcas con sus respectivos modelos y años. **NO debe modificar estos datos**, debe usarlos tal como están proporcionados.
+
+
+
+
+## ℹNota para estudiantes
+* **Los nombres de los métodos deben ser EXACTOS** a los especificados.
+* **El archivo `student.env` debe estar configurado correctamente** con su fila asignada.
+* **Los tests deben pasar** - esto valida que su implementación es correcta.
+* **La salida en consola es OBLIGATORIA** - debe ejecutar `App.java` y copiar el resultado completo.
+
+
+
+
